@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOASOBI — Âm Nhạc & Nghệ Thuật Thị Giác (Ayase & ikura)</title>
+  <meta name="description" content="Portfolio chính thức của YOASOBI (Ayase & ikura) - Dự án nghệ thuật chuyển thể tiểu thuyết thành âm nhạc, hình ảnh và trải nghiệm tương tác hàng đầu Nhật Bản.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  
+  <!-- Font Stack: Google Fonts kèm Font Hệ Thống Dự Phòng Tối Ưu (Segoe UI, Roboto, San Francisco) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: [
+              '"Plus Jakarta Sans"', 
+              'system-ui', 
+              '-apple-system', 
+              'BlinkMacSystemFont', 
+              '"Segoe UI"', 
+              'Roboto', 
+              '"Helvetica Neue"', 
+              'Arial', 
+              '"Noto Sans JP"', 
+              '"Noto Sans"', 
+              'sans-serif'
+            ],
+            display: [
+              '"Syne"', 
+              'system-ui', 
+              '-apple-system', 
+              '"Segoe UI"', 
+              'Roboto', 
+              'sans-serif'
+            ],
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+            },
+            accent: {
+              pink: '#ec4899',
+              amber: '#f59e0b',
+              cyan: '#06b6d4',
+            }
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.3' },
+              '50%': { opacity: '0.7' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body, html {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans JP', 'Noto Sans', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.05);
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0B0F19;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .glass-nav {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 45%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#0B0F19] dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-brand-500 selection:text-white relative overflow-x-hidden min-h-screen">
+
+  <!-- Ambient Glows -->
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-purple-500/15 dark:bg-purple-600/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow"></div>
+  <div class="fixed top-96 right-10 w-[450px] h-[450px] bg-pink-500/15 dark:bg-pink-600/10 rounded-full blur-[90px] pointer-events-none -z-10 animate-float-slow"></div>
+  <div class="fixed bottom-32 left-10 w-[600px] h-[600px] bg-cyan-500/15 dark:bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+  <!-- Header / Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-[#0B0F19]/85">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-pink-500 to-cyan-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+          夜
+        </div>
+        <div>
+          <span class="font-black text-lg text-slate-900 dark:text-white tracking-tight">YOASOBI</span>
+          <span class="text-xs text-brand-600 dark:text-brand-400 block font-semibold">小説を音楽にするユニット</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Về YOASOBI</a>
+        <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Nghệ thuật & Kỹ năng</a>
+        <a href="#portfolio" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tác phẩm nổi bật</a>
+        <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cột mốc sự nghiệp</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Hợp tác & Booking</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-all focus:outline-none" aria-label="Đổi giao diện">
+          <svg id="sun-icon" class="w-5 h-5 hidden text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg id="moon-icon" class="w-5 h-5 text-slate-700 dark:text-slate-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <!-- CTA Booking -->
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-pink-600 hover:opacity-90 text-white font-semibold text-sm shadow-md shadow-brand-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+          <span>Hợp tác dự án</span>
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] transition-all">
+      <div class="flex flex-col space-y-4 pt-2 font-medium">
+        <a href="#about" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Về YOASOBI</a>
+        <a href="#skills" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Nghệ thuật & Kỹ năng</a>
+        <a href="#portfolio" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Tác phẩm nổi bật</a>
+        <a href="#experience" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Cột mốc sự nghiệp</a>
+        <a href="#contact" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Hợp tác & Booking</a>
+        <a href="#contact" class="mobile-link inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand-600 text-white font-semibold">
+          <span>Hợp tác dự án</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-20">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-[calc(100vh-80px)] flex items-center justify-center py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+        
+        <!-- Left Column -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-brand-200 dark:border-brand-500/30 bg-brand-50/80 dark:bg-brand-950/40 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold tracking-wide">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-pink-500"></span>
+            </span>
+            YOASOBI World Tour & Sáng tạo Nhạc phim Anime
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-900 dark:text-white">
+            Chuyển thể <span class="gradient-text">tiểu thuyết</span> thành âm nhạc & nghệ thuật thị giác.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            Chúng tôi là <strong class="text-slate-900 dark:text-white font-bold">YOASOBI (Ayase & ikura)</strong> — Bộ đôi nghệ sĩ & nhà sản xuất âm nhạc hàng đầu Nhật Bản. Chúng tôi biến từng trang tiểu thuyết văn học thành giai điệu lôi cuốn, video hoạt họa đầy cảm xúc và trải nghiệm sân khấu bùng nổ toàn cầu.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#portfolio" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-accent-pink hover:opacity-95 text-white font-bold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              <span>Khám phá Tác phẩm</span>
+            </a>
+            
+            <a 
+              href="CV_Ayase_YOASOBI.pdf" 
+              download="CV_Ayase_YOASOBI.pdf" 
+              onclick="showToast('Đang tải hồ sơ Portfolio & CV của Ayase (YOASOBI)...')"
+              class="px-6 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 bg-white/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-100 font-semibold hover:text-brand-600 dark:hover:text-brand-400 hover:-translate-y-0.5 transition-all flex items-center gap-2"
+            >
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" x2="12" y1="15" y2="3"></line>
+              </svg>
+              <span>Tải Hồ sơ Nghệ sĩ (PDF)</span>
+            </a>
+          </div>
+
+          <!-- Social Proof Stats -->
+          <div class="pt-8 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">3.5B+</div>
+              <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Lượt nghe toàn cầu</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">#1</div>
+              <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Billboard Global Excl. US</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">100%</div>
+              <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Chuyển thể tiểu thuyết</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Visual Avatar (Official YOASOBI MV "Idol" Key Visual) -->
+        <div class="lg:col-span-5 flex justify-center relative">
+          <div class="relative w-72 sm:w-80 md:w-96 aspect-square">
+            
+            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-r from-brand-500 via-pink-500 to-cyan-400 opacity-30 dark:opacity-40 blur-xl animate-pulse"></div>
+            
+            <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/60 dark:border-slate-700/60 shadow-2xl bg-gradient-to-b from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-900">
+              <img 
+                src="https://i.ytimg.com/vi/ZRtdQ81jPUQ/maxresdefault.jpg" 
+                alt="YOASOBI Official Visual" 
+                onerror="this.src='https://i.ytimg.com/vi/ZRtdQ81jPUQ/hqdefault.jpg'"
+                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+              >
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-black/20 to-transparent"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 p-3 rounded-2xl backdrop-blur-md bg-white/20 dark:bg-black/50 border border-white/20 text-white flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-medium text-slate-200">Ayase & ikura</p>
+                  <p class="text-sm font-bold">Novel to Music Universe</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-500 to-pink-500 flex items-center justify-center text-white">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badge 1 -->
+            <a href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ" target="_blank" rel="noopener noreferrer" class="absolute -top-4 -left-6 px-4 py-2.5 rounded-2xl glass-nav bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-xl flex items-center gap-3 animate-float-slow hover:scale-105 transition-transform">
+              <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-brand-500 flex items-center justify-center font-bold">
+                <svg class="w-5 h-5 text-amber-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Hit Single "Idol"</p>
+                <p class="text-xs font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1">550M+ Views <span>↗</span></p>
+              </div>
+            </a>
+
+            <!-- Floating Badge 2 -->
+            <a href="https://www.youtube.com/watch?v=x8VYWazR5mE" target="_blank" rel="noopener noreferrer" class="absolute -bottom-6 -right-6 px-4 py-2.5 rounded-2xl glass-nav bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-xl flex items-center gap-3 animate-float-slow hover:scale-105 transition-transform" style="animation-delay: -3s;">
+              <div class="w-9 h-9 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center font-bold">
+                <svg class="w-5 h-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Yoru ni Kakeru</p>
+                <p class="text-xs font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1">1 Tỷ Streams <span>↗</span></p>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2 block">Về YOASOBI</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+            Âm nhạc khởi nguồn từ thế giới văn chương
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-6 space-y-5 text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+            <p>
+              <strong class="text-slate-900 dark:text-white font-bold">YOASOBI (夜遊び)</strong> được thành lập vào năm 2019 bởi nhà sản xuất âm nhạc <strong>Ayase</strong> và ca sĩ kiêm nhạc sĩ <strong>ikura</strong>. Tên gọi mang ý nghĩa "cuộc dạo chơi về đêm" — nơi hai nghệ sĩ thỏa sức thử nghiệm những giới hạn mới của nghệ thuật.
+            </p>
+            <p>
+              Mỗi tác phẩm của YOASOBI đều được sáng tác dựa trên một truyện ngắn hoặc tiểu thuyết gốc đăng tải trên cổng văn học <em>Monogatary.com</em>. Chúng tôi giải mã tâm lý nhân vật, tái hiện bối cảnh câu chuyện qua những câu bè tinh tế, nhịp synth dồn dập và giọng hát trong trẻo giàu nội lực.
+            </p>
+            <p>
+              Triết lý nghệ thuật: <strong class="text-slate-900 dark:text-white font-bold">"小説を音楽にする" (Biến tiểu thuyết thành âm nhạc)</strong> — Chúng tôi không chỉ làm một bài hát đơn lẻ, mà tạo ra một vũ trụ trải nghiệm đa giác quan gồm âm thanh, hình ảnh anime, sách minh họa và sân khấu concert hoành tráng.
+            </p>
+
+            <div class="pt-4 flex flex-wrap gap-3">
+              <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Sáng tác & Phối khí (Cubase/Logic)
+              </span>
+              <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Chỉ đạo Visual MV Anime
+              </span>
+              <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Thiết kế Binder Album "THE BOOK"
+              </span>
+              <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                Sân khấu biểu diễn 3D LED
+              </span>
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid -->
+          <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brand-500 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-brand-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="8" cy="18" r="4"></circle>
+                  <path d="M12 18V2l7 4"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Music Production</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Sáng tác giai điệu gây nghiện, phối khí điện tử kết hợp piano và dàn nhạc thính phòng độc đáo.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-pink-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Visual Storytelling</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Hợp tác cùng các họa sĩ anime và đạo diễn animation hàng đầu để tạo nên những MV hàng trăm triệu lượt xem.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-cyan-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Văn học & Lời ca</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Chuyển thể ca từ sâu sắc bám sát cốt truyện nguyên tác, mang đến chiều sâu cảm xúc hiếm có cho J-Pop.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-amber-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Physical Experience</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Bộ album đĩa cứng "THE BOOK" dạng sổ còng cao cấp nhận giải thưởng thiết kế bao bì xuất sắc.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2 block">Năng lực sáng tạo</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+          Quy trình sản xuất nghệ thuật của YOASOBI
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 mt-3 text-base">
+          Sự kết hợp giữa công nghệ âm thanh hiện đại, tư duy mỹ thuật thị giác và sức lan tỏa truyền thông số.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Column 1: Music Production -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 shadow-lg shadow-slate-200/50 dark:shadow-none hover:border-brand-500/50 transition-colors">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" x2="4" y1="21" y2="14"></line>
+                <line x1="4" x2="4" y1="10" y2="3"></line>
+                <line x1="12" x2="12" y1="21" y2="12"></line>
+                <line x1="12" x2="12" y1="8" y2="3"></line>
+                <line x1="20" x2="20" y1="21" y2="16"></line>
+                <line x1="20" x2="20" y1="12" y2="3"></line>
+                <line x1="1" x2="7" y1="14" y2="14"></line>
+                <line x1="9" x2="15" y1="8" y2="8"></line>
+                <line x1="17" x2="23" y1="16" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Sản xuất Âm nhạc</h3>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Cubase & Logic Pro DAW</span>
+                <span class="text-brand-600 dark:text-brand-400">98%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600" style="width: 98%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Phối khí Pop / Rock / Orchestra</span>
+                <span class="text-brand-600 dark:text-brand-400">95%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Vocal Tuning & Synth Programming</span>
+                <span class="text-brand-600 dark:text-brand-400">92%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600" style="width: 92%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Soundtrack & Anime Scoring</span>
+                <span class="text-brand-600 dark:text-brand-400">96%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-brand-600 to-indigo-600" style="width: 96%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Mixing</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Piano Hook</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Fast Tempo Synth</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Dolby Atmos</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Visual & Art Direction -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 shadow-lg shadow-slate-200/50 dark:shadow-none hover:border-pink-500/50 transition-colors">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center">
+              <svg class="w-5 h-5 text-pink-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Visual & Art Direction</h3>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Storyboarding & MV Direction</span>
+                <span class="text-pink-600 dark:text-pink-400">94%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-pink-500 to-rose-500" style="width: 94%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Concept Art & Nhân vật Anime</span>
+                <span class="text-pink-600 dark:text-pink-400">90%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-pink-500 to-rose-500" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Thiết kế bìa đĩa & Album Binder</span>
+                <span class="text-pink-600 dark:text-pink-400">92%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-pink-500 to-rose-500" style="width: 92%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>3D Concert LED & Lighting Show</span>
+                <span class="text-pink-600 dark:text-pink-400">88%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-pink-500 to-rose-500" style="width: 88%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Anime MV</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Typography</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Packaging Design</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Stage FX</span>
+          </div>
+        </div>
+
+        <!-- Column 3: Global Storytelling & Media -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 shadow-lg shadow-slate-200/50 dark:shadow-none hover:border-cyan-500/50 transition-colors">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center">
+              <svg class="w-5 h-5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+                <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+              </svg>
+            </div>
+            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Lan tỏa Toàn cầu</h3>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Chuyển thể Tiểu thuyết sang Ca từ</span>
+                <span class="text-cyan-600 dark:text-cyan-400">96%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style="width: 96%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Chiến dịch Viral TikTok / Reels</span>
+                <span class="text-cyan-600 dark:text-cyan-400">95%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Phát hành Đa nền tảng Quốc tế</span>
+                <span class="text-cyan-600 dark:text-cyan-400">94%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style="width: 94%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-1">
+                <span>Live Tour & Festival Performance</span>
+                <span class="text-cyan-600 dark:text-cyan-400">92%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                <div class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" style="width: 92%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Billboard Chart</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">YouTube 6M Subs</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Coachella 2024</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-xs font-medium">Anime Expo</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PORTFOLIO / WORKS SECTION (OFFICIAL YOUTUBE MUSIC VIDEOS) -->
+    <section id="portfolio" class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2 block">Kênh YouTube Chính Thức</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+              Tuyệt phẩm âm nhạc & Official MV
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-2">
+              Hình ảnh Thumbnail gốc và đường link phát trực tiếp từng MV trên kênh YouTube chính thức của YOASOBI.
+            </p>
+          </div>
+
+          <!-- Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2 bg-slate-200/70 dark:bg-slate-800/70 p-1.5 rounded-2xl border border-slate-300/50 dark:border-slate-700/50">
+            <button onclick="filterProjects('all')" class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active-tab bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm" data-category="all">
+              Tất cả
+            </button>
+            <button onclick="filterProjects('anime')" class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" data-category="anime">
+              Nhạc phim Anime
+            </button>
+            <button onclick="filterProjects('singles')" class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" data-category="singles">
+              Single Hiện Tượng
+            </button>
+            <button onclick="filterProjects('collab')" class="project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" data-category="collab">
+              Chiến Dịch Nghệ Thuật
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Project 1: Idol (アイドル) -->
+          <div class="project-card group rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300" data-category="anime">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openProjectModal('idol')">
+              <img 
+                src="https://i.ytimg.com/vi/ZRtdQ81jPUQ/maxresdefault.jpg" 
+                alt="Idol - Official MV Thumbnail" 
+                onerror="this.src='https://i.ytimg.com/vi/ZRtdQ81jPUQ/hqdefault.jpg'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-pink-600 dark:text-pink-400 backdrop-blur-md">
+                  Oshi no Ko OP
+                </span>
+              </div>
+
+              <!-- Play Button Overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1">
+                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-pink-500/80 backdrop-blur-sm">550M+ Views • Billboard #1</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-black text-xl text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer" onclick="openProjectModal('idol')">
+                Idol (アイドル) — Nhạc phim Oshi no Ko
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 line-clamp-2">
+                Bài hát hiện tượng toàn cầu phá vỡ mọi kỷ lục streaming của J-Pop trên Billboard thế giới, kết hợp ca từ kịch tính và MV hoạt họa bùng nổ.
+              </p>
+              
+              <!-- Direct YouTube Link Button -->
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                <button onclick="openProjectModal('idol')" class="text-xs font-semibold text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">
+                  Xem chi tiết Case Study
+                </button>
+                <a 
+                  href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Mở YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Yoru ni Kakeru (夜に駆ける) -->
+          <div class="project-card group rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300" data-category="singles">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openProjectModal('yoru')">
+              <img 
+                src="https://i.ytimg.com/vi/x8VYWazR5mE/maxresdefault.jpg" 
+                alt="Yoru ni Kakeru - Official MV Thumbnail" 
+                onerror="this.src='https://i.ytimg.com/vi/x8VYWazR5mE/hqdefault.jpg'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-brand-600 dark:text-brand-400 backdrop-blur-md">
+                  Debut Masterpiece
+                </span>
+              </div>
+
+              <!-- Play Button Overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1">
+                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-brand-500/80 backdrop-blur-sm">1 Tỷ Lượt Stream</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-black text-xl text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer" onclick="openProjectModal('yoru')">
+                Yoru ni Kakeru (夜に駆ける) — Racing into the Night
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 line-clamp-2">
+                Tuyệt phẩm mở màn chuyển thể từ tiểu thuyết Thanatos no Yūwaku, khởi đầu cho kỷ nguyên novel-to-music của YOASOBI.
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                <button onclick="openProjectModal('yoru')" class="text-xs font-semibold text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">
+                  Xem chi tiết Case Study
+                </button>
+                <a 
+                  href="https://www.youtube.com/watch?v=x8VYWazR5mE" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Mở YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Gunjou (群青) -->
+          <div class="project-card group rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300" data-category="collab">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openProjectModal('gunjou')">
+              <img 
+                src="https://i.ytimg.com/vi/Y4nEEZwckuU/maxresdefault.jpg" 
+                alt="Gunjou - Official MV Thumbnail" 
+                onerror="this.src='https://i.ytimg.com/vi/Y4nEEZwckuU/hqdefault.jpg'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-cyan-600 dark:text-cyan-400 backdrop-blur-md">
+                  Blue Period x Alfort
+                </span>
+              </div>
+
+              <!-- Play Button Overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1">
+                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-cyan-500/80 backdrop-blur-sm">Choral Anthem</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-black text-xl text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer" onclick="openProjectModal('gunjou')">
+                Gunjou (群青) — Khúc ca khát vọng nghệ thuật
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 line-clamp-2">
+                Bài ca cổ vũ những người theo đuổi đam mê hội họa và sáng tạo, kết hợp dàn đồng ca hoành tráng và năng lượng bùng nổ.
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                <button onclick="openProjectModal('gunjou')" class="text-xs font-semibold text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">
+                  Xem chi tiết Case Study
+                </button>
+                <a 
+                  href="https://www.youtube.com/watch?v=Y4nEEZwckuU" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Mở YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Yuusha (勇者) -->
+          <div class="project-card group rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300" data-category="anime">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openProjectModal('yuusha')">
+              <img 
+                src="https://i.ytimg.com/vi/OIBODIPC_8Y/maxresdefault.jpg" 
+                alt="Yuusha - Official MV Thumbnail" 
+                onerror="this.src='https://i.ytimg.com/vi/OIBODIPC_8Y/hqdefault.jpg'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-emerald-600 dark:text-emerald-400 backdrop-blur-md">
+                  Frieren Anime OP
+                </span>
+              </div>
+
+              <!-- Play Button Overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1">
+                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-500/80 backdrop-blur-sm">Top 1 Oricon</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-black text-xl text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer" onclick="openProjectModal('yuusha')">
+                Yuusha (勇者) — Hành trình của Frieren
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 line-clamp-2">
+                Ca khúc mở đầu anime đình đám Frieren với sự giao thoa độc đáo giữa nhạc điện tử hiện đại và nhạc cụ cổ điển phương Tây.
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                <button onclick="openProjectModal('yuusha')" class="text-xs font-semibold text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">
+                  Xem chi tiết Case Study
+                </button>
+                <a 
+                  href="https://www.youtube.com/watch?v=OIBODIPC_8Y" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Mở YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Kaibutsu (怪物) -->
+          <div class="project-card group rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300" data-category="anime">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openProjectModal('kaibutsu')">
+              <img 
+                src="https://i.ytimg.com/vi/dy90tA3TT1c/maxresdefault.jpg" 
+                alt="Kaibutsu - Official MV Thumbnail" 
+                onerror="this.src='https://i.ytimg.com/vi/dy90tA3TT1c/hqdefault.jpg'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-amber-600 dark:text-amber-400 backdrop-blur-md">
+                  Beastars Season 2 OP
+                </span>
+              </div>
+
+              <!-- Play Button Overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1">
+                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-500/80 backdrop-blur-sm">300M+ Views</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-black text-xl text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer" onclick="openProjectModal('kaibutsu')">
+                Kaibutsu (怪物) — Nhạc phim Beastars Season 2
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 line-clamp-2">
+                Bài hát bộc lộ bản năng hoang dã và sự giằng xé nội tâm, lọt top các ca khúc hay nhất năm do tạp chí TIME bình chọn.
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                <button onclick="openProjectModal('kaibutsu')" class="text-xs font-semibold text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">
+                  Xem chi tiết Case Study
+                </button>
+                <a 
+                  href="https://www.youtube.com/watch?v=dy90tA3TT1c" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Mở YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Shukufuku (祝福) -->
+          <div class="project-card group rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/70 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300" data-category="anime">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openProjectModal('shukufuku')">
+              <img 
+                src="https://i.ytimg.com/vi/3eytpBOkOFA/maxresdefault.jpg" 
+                alt="Shukufuku - Official MV Thumbnail" 
+                onerror="this.src='https://i.ytimg.com/vi/3eytpBOkOFA/hqdefault.jpg'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-900/90 text-purple-600 dark:text-purple-400 backdrop-blur-md">
+                  Gundam: Witch from Mercury OP
+                </span>
+              </div>
+
+              <!-- Play Button Overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1">
+                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-500/80 backdrop-blur-sm">Gundam Theme Hit</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-black text-xl text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer" onclick="openProjectModal('shukufuku')">
+                Shukufuku (祝福) — The Blessing (Gundam OP)
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mt-2 line-clamp-2">
+                Sáng tác dựa trên tiểu thuyết 'Cradle Planet' kể từ góc nhìn của cỗ máy Mobile Suit Aerial, bản giao hưởng công nghệ và tình thân.
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                <button onclick="openProjectModal('shukufuku')" class="text-xs font-semibold text-slate-500 hover:text-brand-600 dark:hover:text-brand-400">
+                  Xem chi tiết Case Study
+                </button>
+                <a 
+                  href="https://www.youtube.com/watch?v=3eytpBOkOFA" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-all shadow hover:scale-105"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <span>Mở YouTube ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & MILESTONES (TIMELINE) -->
+    <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2 block">Hành trình nghệ thuật</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+          Cột mốc sự nghiệp của YOASOBI
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 mt-2">
+          Từ những bản demo thu âm trong phòng nhỏ đến sân khấu âm nhạc lớn nhất hành tinh.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto relative">
+        <div class="absolute left-4 sm:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-brand-500 via-pink-500 to-cyan-500 -translate-x-1/2"></div>
+
+        <div class="space-y-12">
+          
+          <!-- Timeline 1 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+            <div class="flex items-center sm:w-1/2 sm:justify-end sm:pr-8 pl-12 sm:pl-0 order-2 sm:order-1">
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-sm w-full hover:border-brand-500 transition-colors">
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400">2023 — Hiện tại</span>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white mt-1">Kỷ nguyên Toàn cầu & Coachella Festival</h3>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Billboard Global #1 • Dome Tour Châu Á & Mỹ</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                  Phát hành bản hit "Idol" thống trị Billboard thế giới, biểu diễn tại lễ hội âm nhạc Coachella và tổ chức Dome Tour thu hút hơn 100,000 khán giả.
+                </p>
+              </div>
+            </div>
+            
+            <div class="absolute left-4 sm:left-1/2 w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center -translate-x-1/2 shadow-lg shadow-brand-500/40 z-10 order-1 sm:order-2">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path></svg>
+            </div>
+
+            <div class="hidden sm:block sm:w-1/2 sm:pl-8 order-3 text-slate-400 text-sm font-medium">
+              Tokyo Dome, Los Angeles, Seoul
+            </div>
+          </div>
+
+          <!-- Timeline 2 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+            <div class="hidden sm:block sm:w-1/2 sm:pr-8 order-1 text-right text-slate-400 text-sm font-medium">
+              Sony Music Entertainment Japan
+            </div>
+
+            <div class="absolute left-4 sm:left-1/2 w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center -translate-x-1/2 shadow-lg shadow-pink-500/40 z-10">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+            </div>
+
+            <div class="flex items-center sm:w-1/2 sm:pl-8 pl-12 sm:pl-0 order-2">
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-sm w-full hover:border-pink-500 transition-colors">
+                <span class="text-xs font-bold text-pink-600 dark:text-pink-400">2021 — 2023</span>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white mt-1">Đỉnh cao Sáng tạo với "THE BOOK I & II"</h3>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Beastars, Mobile Suit Gundam, Blue Period</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                  Phát hành chuỗi EP dạng binder gáy còng độc đáo, đảm nhận nhạc mở đầu cho các thương hiệu Anime kinh điển và gặt hái chứng nhận Bạch kim đôi.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline 3 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+            <div class="flex items-center sm:w-1/2 sm:justify-end sm:pr-8 pl-12 sm:pl-0 order-2 sm:order-1">
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-sm w-full hover:border-indigo-500 transition-colors">
+                <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">2019 — 2021</span>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white mt-1">Hiện tượng "Yoru ni Kakeru" ra đời</h3>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Dự án Monogatary • 1 Tỷ Streams</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                  Ayase kết nối cùng ikura để khởi động dự án chuyển thể tiểu thuyết "Thanatos no Yūwaku". Single ra mắt lập tức gây bão mạng xã hội và đứng đầu bảng xếp hạng Billboard Nhật Bản suốt nhiều tuần.
+                </p>
+              </div>
+            </div>
+
+            <div class="absolute left-4 sm:left-1/2 w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center -translate-x-1/2 shadow-lg shadow-indigo-500/40 z-10 order-1 sm:order-2">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+            </div>
+
+            <div class="hidden sm:block sm:w-1/2 sm:pl-8 order-3 text-slate-400 text-sm font-medium">
+              Tokyo, Nhật Bản
+            </div>
+          </div>
+
+          <!-- Timeline 4 -->
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center group">
+            <div class="hidden sm:block sm:w-1/2 sm:pr-8 order-1 text-right text-slate-400 text-sm font-medium">
+              Nền tảng Sáng tạo Cá nhân
+            </div>
+
+            <div class="absolute left-4 sm:left-1/2 w-8 h-8 rounded-full bg-cyan-500 text-white flex items-center justify-center -translate-x-1/2 shadow-lg shadow-cyan-500/40 z-10">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            </div>
+
+            <div class="flex items-center sm:w-1/2 sm:pl-8 pl-12 sm:pl-0 order-2">
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-sm w-full hover:border-cyan-500 transition-colors">
+                <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400">Khởi nguồn & Nền tảng</span>
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white mt-1">Ayase (Vocaloid Producer) & ikura (Acoustic Singer)</h3>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Hội tụ tài năng sáng tác & chất giọng thiên bẩm</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                  Ayase đã là nhà sản xuất Vocaloid danh tiếng với "Last Resort", "Ghost City Tokyo"; trong khi ikura là ca sĩ acoustic đầy triển vọng với khả năng kể chuyện bằng giọng hát tinh tế.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="py-20 bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2 block">Nhận định & Đánh giá</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+            Các chuyên gia trong ngành nói về YOASOBI
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="p-8 rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-sm relative">
+            <div class="flex items-center gap-1 text-amber-400 mb-4">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic mb-6">
+              "Khả năng thấu hiểu cốt truyện tiểu thuyết và nén toàn bộ cảm xúc 300 trang sách vào 3 phút rưỡi âm nhạc của Ayase là một tài năng phi thường. Ca khúc 'Idol' đã thay đổi hoàn toàn cách thế giới nhìn nhận J-Pop."
+            </p>
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Producer" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Sony Music Japan</h4>
+                <p class="text-xs text-slate-400">A&R Executive Director</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-sm relative">
+            <div class="flex items-center gap-1 text-amber-400 mb-4">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic mb-6">
+              "Giọng hát của ikura không đơn thuần là kỹ thuật thanh nhạc, mà là khả năng diễn xuất cảm xúc tuyệt đỉnh. Từng nhịp thở và câu luyến láy đều khớp chuẩn xác với tâm trạng nhân vật trong phim."
+            </p>
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Director" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Doga Kobo Animation</h4>
+                <p class="text-xs text-slate-400">Anime Series Director</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 shadow-sm relative">
+            <div class="flex items-center gap-1 text-amber-400 mb-4">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic mb-6">
+              "Sự kết hợp giữa ấn bản vật lý THE BOOK và ca khúc số tạo nên sự gắn kết trọn vẹn giữa văn học viết và nghệ thuật nghe nhìn. Đây là hình mẫu hoàn hảo cho kỷ nguyên sáng tạo đa phương tiện."
+            </p>
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Editor" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white">Monogatary Publishing</h4>
+                <p class="text-xs text-slate-400">Chief Editor</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT & BOOKING SECTION -->
+    <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Contact Info -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2 block">Liên hệ & Hợp tác</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+              Sáng tác nhạc phim, thương hiệu & Tour diễn
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 mt-4 leading-relaxed">
+              Bạn đang lên kế hoạch sản xuất anime, chiến dịch thương hiệu quốc tế hoặc muốn mời YOASOBI tham gia biểu diễn tại các sự kiện âm nhạc quy mô lớn? Hãy gửi lời mời hợp tác cho ban quản lý của chúng tôi.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 group">
+              <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6 text-brand-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Email quản lý & Booking</p>
+                <a href="mailto:contact@yoasobi-music.jp" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                  contact@yoasobi-music.jp
+                </a>
+              </div>
+              <button onclick="copyToClipboard('contact@yoasobi-music.jp', 'Đã sao chép email quản lý YOASOBI!')" class="p-2 text-slate-400 hover:text-brand-500 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" title="Sao chép email">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 group">
+              <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6 text-pink-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                  <path d="M9 22v-4h6v4"></path>
+                  <path d="M8 6h.01"></path>
+                  <path d="M16 6h.01"></path>
+                  <path d="M12 6h.01"></path>
+                  <path d="M12 10h.01"></path>
+                  <path d="M12 14h.01"></path>
+                  <path d="M16 10h.01"></path>
+                  <path d="M16 14h.01"></path>
+                  <path d="M8 10h.01"></path>
+                  <path d="M8 14h.01"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Đơn vị quản lý trực tiếp</p>
+                <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                  Sony Music Entertainment (Japan) Inc.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 group">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6 text-cyan-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Trụ sở chính</p>
+                <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                  Roppongi, Minato-ku, Tokyo, Japan
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Kênh chính thức của YOASOBI</p>
+            <div class="flex items-center gap-3">
+              <a href="https://www.yoasobi-music.jp" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-brand-500 hover:border-brand-500 flex items-center justify-center transition-all hover:scale-110 font-bold" title="Official Website">
+                Web
+              </a>
+              <a href="https://www.youtube.com/@Ayase_YOASOBI" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-red-500 hover:border-red-500 flex items-center justify-center transition-all hover:scale-110 font-bold" title="YouTube Channel">
+                YT
+              </a>
+              <a href="https://twitter.com/YOASOBI_staff" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-400 hover:border-blue-400 flex items-center justify-center transition-all hover:scale-110 font-bold" title="X / Twitter">
+                X
+              </a>
+              <a href="https://www.instagram.com/yoasobi_staff_" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-pink-500 hover:border-pink-500 flex items-center justify-center transition-all hover:scale-110 font-bold" title="Instagram">
+                IG
+              </a>
+              <a href="https://open.spotify.com/artist/64tNsm6TnZe2zpcMVMOo9n" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-emerald-500 hover:border-emerald-500 flex items-center justify-center transition-all hover:scale-110 font-bold" title="Spotify">
+                SP
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="lg:col-span-7">
+          <div class="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-xl relative overflow-hidden">
+            
+            <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-2">Gửi đề xuất hợp tác</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mb-8">Ban quản lý sẽ phản hồi các đề xuất phù hợp trong vòng 48 giờ.</p>
+
+            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">Đại diện / Doanh nghiệp *</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    required 
+                    placeholder="Tên công ty hoặc đối tác" 
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-sm"
+                  >
+                </div>
+                <div>
+                  <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">Email liên lạc công việc *</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    required 
+                    placeholder="partner@company.jp" 
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-sm"
+                  >
+                </div>
+              </div>
+
+              <div>
+                <label for="service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">Hạng mục hợp tác</label>
+                <select 
+                  id="service" 
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-sm"
+                >
+                  <option value="anime">Sáng tác Nhạc phim Anime / Theme Song</option>
+                  <option value="brand">Chiến dịch Thương hiệu Toàn cầu (Brand Campaign)</option>
+                  <option value="live">Mời biểu diễn Festival / Concert Tour</option>
+                  <option value="collab">Chuyển thể Tiểu thuyết & Tác quyền Văn học</option>
+                  <option value="press">Phỏng vấn Báo chí & Truyền thông Quốc tế</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">Nội dung chi tiết & Kế hoạch thời gian *</label>
+                <textarea 
+                  id="message" 
+                  rows="4" 
+                  required 
+                  placeholder="Hãy chia sẻ sơ lược về dự án, tiến độ dự kiến hoặc kịch bản anime cần sản xuất nhạc..." 
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-sm resize-none"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                id="submit-btn"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-pink-600 hover:opacity-95 text-white font-bold text-base shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+              >
+                <span>Gửi đề xuất hợp tác</span>
+              </button>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-12 bg-white dark:bg-[#0B0F19] text-sm text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-accent-pink flex items-center justify-center text-white font-bold">
+          夜
+        </div>
+        <p>© 2026 YOASOBI / Sony Music Entertainment (Japan) Inc. All rights reserved.</p>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Về đầu trang</a>
+        <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Giới thiệu</a>
+        <a href="#portfolio" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tác phẩm</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Liên hệ</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- PROJECT CASE STUDY MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-black/80 backdrop-blur-md transition-all">
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl p-6 sm:p-8 text-slate-800 dark:text-slate-100">
+      
+      <!-- Close Button -->
+      <button onclick="closeProjectModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-300 transition-colors">
+        ✕
+      </button>
+
+      <div id="modal-content" class="space-y-6">
+        <!-- Injected via JS -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="px-5 py-3 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xl flex items-center gap-3 border border-slate-700 dark:border-slate-200">
+      <span class="text-emerald-400 dark:text-emerald-600 font-bold">✓</span>
+      <span id="toast-message" class="text-sm font-semibold">Thành công!</span>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Theme Management
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+
+    function updateThemeUI(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialThemeDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+      updateThemeUI(initialThemeDark);
+    } catch(e) {
+      updateThemeUI(true);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      const nextThemeDark = !isCurrentlyDark;
+      updateThemeUI(nextThemeDark);
+      try {
+        localStorage.setItem('theme', nextThemeDark ? 'dark' : 'light');
+      } catch(e) {}
+    });
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Portfolio Filter
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.project-filter-btn');
+
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-category') === category) {
+          btn.className = "project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active-tab bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm";
+        } else {
+          btn.className = "project-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Projects Data with Exact Official YouTube Links & Video IDs
+    const projectsData = {
+      idol: {
+        title: "Idol (アイドル) — Nhạc mở đầu Anime 'Oshi no Ko'",
+        category: "Anime Theme • Global Record",
+        youtubeId: "ZRtdQ81jPUQ",
+        youtubeUrl: "https://www.youtube.com/watch?v=ZRtdQ81jPUQ",
+        image: "https://i.ytimg.com/vi/ZRtdQ81jPUQ/maxresdefault.jpg",
+        fallbackImage: "https://i.ytimg.com/vi/ZRtdQ81jPUQ/hqdefault.jpg",
+        problem: "Cần sáng tác một ca khúc mở đầu phản ánh chân thực mặt tối hào nhoáng của giới thần tượng giải trí, dựa trên tiểu thuyết ngắn '45510' của tác giả Aka Akasaka.",
+        solution: "Ayase kết hợp ca từ đầy mỉa mai lẫn cuồng nhiệt với tiết tấu dồn dập, tiếng hô cổ vũ (Wotagei chants), hợp xướng phúc âm ma mị và chất giọng biến hóa thần sầu của ikura.",
+        impact: "Đứng đầu Billboard Global Excl. US trong nhiều tuần liên tiếp, đạt hơn 550 triệu lượt xem trên YouTube và hơn 600 triệu lượt stream.",
+        tools: ["Cubase Pro", "Gospel Choirs", "Vocaloid Synthesis", "Doga Kobo Animation"]
+      },
+      yoru: {
+        title: "Yoru ni Kakeru (夜に駆ける) — Racing into the Night",
+        category: "Novel-to-Music Milestone",
+        youtubeId: "x8VYWazR5mE",
+        youtubeUrl: "https://www.youtube.com/watch?v=x8VYWazR5mE",
+        image: "https://i.ytimg.com/vi/x8VYWazR5mE/maxresdefault.jpg",
+        fallbackImage: "https://i.ytimg.com/vi/x8VYWazR5mE/hqdefault.jpg",
+        problem: "Chuyển thể truyện ngắn kinh dị tâm lý 'Thanatos no Yūwaku' (Sự cám dỗ của Thần Chết) thành một bản nhạc pop cuốn hút mà không đánh mất chiều sâu nhân vật.",
+        solution: "Tương phản giữa chủ đề u tối và giai điệu piano nhịp độ nhanh rộn rã (fast-tempo J-Pop), kết hợp MV hoạt họa đen-hồng-xanh kinh điển của nghệ sĩ Ai Nina.",
+        impact: "Vượt mốc 1 tỷ lượt stream toàn cầu, đưa tên tuổi YOASOBI từ nhóm nhạc ẩn danh trở thành hiện tượng văn hóa của giới trẻ Nhật Bản và quốc tế.",
+        tools: ["Piano Driven Melody", "Ai Nina Illustration", "Synth Bassline", "Monogatary.com"]
+      },
+      gunjou: {
+        title: "Gunjou (群青) — Hợp tác cùng Alfort & Blue Period",
+        category: "Commercial Anthem & Inspiration",
+        youtubeId: "Y4nEEZwckuU",
+        youtubeUrl: "https://www.youtube.com/watch?v=Y4nEEZwckuU",
+        image: "https://i.ytimg.com/vi/Y4nEEZwckuU/maxresdefault.jpg",
+        fallbackImage: "https://i.ytimg.com/vi/Y4nEEZwckuU/hqdefault.jpg",
+        problem: "Sáng tác bài hát khích lệ thế hệ trẻ vượt qua sự hoài nghi bản thân để theo đuổi đam mê nghệ thuật, dựa trên truyện manga đoạt giải 'Blue Period'.",
+        solution: "Phần điệp khúc hợp xướng với sự tham gia của dàn hợp xướng trường học (Plusonica), ca từ truyền cảm hứng mạnh mẽ về việc dám cầm cọ vẽ lên tương lai.",
+        impact: "Được chọn làm ca khúc chủ đề cho nhiều kỳ thi tuyển sinh và chiến dịch sáng tạo, trở thành bản thánh ca tinh thần cho học sinh, sinh viên nghệ thuật toàn cầu.",
+        tools: ["Acoustic & Choir", "Blue Period Collaboration", "Alfort Campaign", "Story Adaptation"]
+      },
+      yuusha: {
+        title: "Yuusha (勇者) — Anime 'Frieren: Beyond Journey's End'",
+        category: "Anime Fantasy Soundtrack",
+        youtubeId: "OIBODIPC_8Y",
+        youtubeUrl: "https://www.youtube.com/watch?v=OIBODIPC_8Y",
+        image: "https://i.ytimg.com/vi/OIBODIPC_8Y/maxresdefault.jpg",
+        fallbackImage: "https://i.ytimg.com/vi/OIBODIPC_8Y/hqdefault.jpg",
+        problem: "Thể hiện góc nhìn hoài niệm sâu lắng của nàng pháp sư Elf bất tử sau khi người đồng đội Dũng giả Himmel qua đời, chuyển thể từ truyện 'Sousou'.",
+        solution: "Bản phối bắt đầu bằng nhịp synth huyền bí của Ayase trước khi bùng nổ thành giai điệu hào hùng, thể hiện hành trình nối tiếp ý chí của người đã khuất.",
+        impact: "Đạt vị trí #1 Oricon Digital Single ngay trong tuần đầu phát hành, được cộng đồng fan anime quốc tế chấm điểm mở màn xuất sắc nhất năm 2023.",
+        tools: ["Logic Pro X", "Orchestral Strings", "Anime Storyboards", "Madhouse Animation"]
+      },
+      kaibutsu: {
+        title: "Kaibutsu (怪物) — Monster (Beastars Season 2 OP)",
+        category: "Anime Theme Song",
+        youtubeId: "dy90tA3TT1c",
+        youtubeUrl: "https://www.youtube.com/watch?v=dy90tA3TT1c",
+        image: "https://i.ytimg.com/vi/dy90tA3TT1c/maxresdefault.jpg",
+        fallbackImage: "https://i.ytimg.com/vi/dy90tA3TT1c/hqdefault.jpg",
+        problem: "Sáng tác bài hát cho cuộc chiến sinh tồn giữa thú ăn cỏ và thú ăn thịt, chuyển thể từ truyện ngắn 'Jibun no Mune ni Jibun no Mimi o Oshi Atete' của tác giả Paru Itagaki.",
+        solution: "Nhịp beat điện tử dồn dập, tiếng bass đục và giọng ca kịch tính của ikura lột tả trọn vẹn bản năng săn mồi và khát khao bảo vệ kẻ yếu.",
+        impact: "Hơn 300 triệu lượt xem trên YouTube, được tạp chí TIME danh tiếng của Mỹ bình chọn là một trong những ca khúc hay nhất năm.",
+        tools: ["Dark Electro Synth", "Paru Itagaki Novel", "Beastars Anime", "Fast Tempo Bass"]
+      },
+      shukufuku: {
+        title: "Shukufuku (祝福) — The Blessing (Gundam OP)",
+        category: "Sci-Fi Anime Soundtrack",
+        youtubeId: "3eytpBOkOFA",
+        youtubeUrl: "https://www.youtube.com/watch?v=3eytpBOkOFA",
+        image: "https://i.ytimg.com/vi/3eytpBOkOFA/maxresdefault.jpg",
+        fallbackImage: "https://i.ytimg.com/vi/3eytpBOkOFA/hqdefault.jpg",
+        problem: "Thể hiện tình cảm gắn kết sâu sắc giữa cô nữ sinh phi công Suletta Mercury và cỗ máy chiến đấu Gundam Aerial, chuyển thể từ tiểu thuyết 'Yurikago no Hoshi'.",
+        solution: "Giai điệu bùng nổ với câu mở đầu piano thương hiệu và lời hát ấm áp như một lời chúc phúc của cỗ máy hộ mệnh dành cho người bạn tri kỷ.",
+        impact: "Xác lập kỷ lục streaming của toàn bộ dòng phim Gundam lịch sử, đạt chứng nhận Bạch kim từ Hiệp hội Công nghiệp Ghi âm Nhật Bản (RIAJ).",
+        tools: ["Gundam Lore", "Sunrise Animation", "Orchestral Synth", "Novel Adaptation"]
+      }
+    };
+
+    function openProjectModal(projectId) {
+      const data = projectsData[projectId];
+      if (!data) return;
+
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <div class="space-y-6">
+          <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-900 shadow-lg relative group">
+            <img src="${data.image}" alt="${data.title}" onerror="this.src='${data.fallbackImage}'" class="w-full h-full object-cover">
+            
+            <!-- Direct Watch Overlay Link -->
+            <a href="${data.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black/40 hover:bg-black/20 flex items-center justify-center transition-colors">
+              <div class="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center shadow-2xl pl-1 hover:scale-110 transition-transform">
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </a>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">${data.category}</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">${data.title}</h2>
+            </div>
+            
+            <a 
+              href="${data.youtubeUrl}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-bold shadow-lg shadow-red-600/30 hover:scale-105 transition-all flex-shrink-0"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>Phát trên YouTube ↗</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/60">
+            <div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2 mb-2">
+                📖 Tiểu thuyết & Bối cảnh (Context)
+              </h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${data.problem}</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2 mb-2">
+                ✨ Giải pháp Âm nhạc & Visual
+              </h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${data.solution}</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-brand-50/60 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-800 flex items-center gap-3">
+            <span class="text-xl">🏆</span>
+            <div>
+              <p class="text-xs font-bold uppercase text-brand-700 dark:text-brand-300">Thành tích & Kỷ lục (Milestones)</p>
+              <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">${data.impact}</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-2">Công cụ & Đội ngũ sản xuất:</h4>
+            <div class="flex flex-wrap gap-2">
+              ${data.tools.map(t => `<span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
+              Đóng lại
+            </button>
+            <a href="${data.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold text-sm shadow-md flex items-center gap-2">
+              <span>Xem trực tiếp trên Kênh YOASOBI</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('project-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      document.getElementById('project-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Toast
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // Copy to clipboard
+    function copyToClipboard(text, successMsg) {
+      try {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMsg);
+        }).catch(() => {
+          showToast('Đã sao chép: ' + text);
+        });
+      } catch(e) {
+        showToast('Đã sao chép: ' + text);
+      }
+    }
+
+    // Handle Contact Form Submit
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submit-btn');
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.innerHTML = `<span>⏳ Đang gửi...</span>`;
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = `<span>✓ Đã gửi đến ban quản lý YOASOBI!</span>`;
+        showToast('Cảm ơn bạn! Đề xuất hợp tác đã được chuyển đến ban quản lý YOASOBI.');
+        document.getElementById('contact-form').reset();
+
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }, 3000);
+      }, 1000);
+    }
+
+    // Close modal on click outside
+    document.getElementById('project-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'project-modal') closeProjectModal();
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+  </script>
+</body>
+</html>
