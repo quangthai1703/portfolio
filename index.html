@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YOASOBI — Âm Nhạc & Nghệ Thuật Thị Giác (Ayase & ikura)</title>
-  <meta name="description" content="Portfolio chính thức của YOASOBI (Ayase & ikura) - Dự án nghệ thuật chuyển thể tiểu thuyết thành âm nhạc, hình ảnh và trải nghiệm tương tác hàng đầu Nhật Bản.">
+  <title>YOASOBI — Âm Nhạc & Nghệ Thuật Thị Giác (Phan Quang Thái)</title>
+  <meta name="description" content="Portfolio chính thức phong cách YOASOBI (Ayase & ikura) của Phan Quang Thái - Dự án sáng tạo chuyển thể tiểu thuyết thành âm nhạc, anime MV và trải nghiệm tương tác.">
+  <meta name="keywords" content="YOASOBI, Ayase, ikura, Phan Quang Thái, Portfolio, Music Producer, Anime MV, J-Pop, Racing into the night, Idol, Gunjou">
+  <meta name="author" content="Phan Quang Thái">
+  <meta name="theme-color" content="#0B0F19">
+  <link rel="canonical" href="https://quangthai1703.github.io/portfolio/">
+
+  <!-- Open Graph / Facebook / Zalo Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://quangthai1703.github.io/portfolio/">
+  <meta property="og:title" content="YOASOBI — Âm Nhạc & Nghệ Thuật Thị Giác | Phan Quang Thái">
+  <meta property="og:description" content="Khám phá các tác phẩm âm nhạc chuyển thể từ tiểu thuyết, MV Anime triệu views và kết nối hợp tác trực tiếp.">
+  <meta property="og:image" content="https://i.ytimg.com/vi/ZRtdQ81jPUQ/maxresdefault.jpg">
+  <meta property="og:image:alt" content="YOASOBI Official Visual Poster">
+  <meta property="og:site_name" content="Phan Quang Thái Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://quangthai1703.github.io/portfolio/">
+  <meta name="twitter:title" content="YOASOBI — Âm Nhạc & Nghệ Thuật Thị Giác | Phan Quang Thái">
+  <meta name="twitter:description" content="Khám phá các tác phẩm âm nhạc chuyển thể từ tiểu thuyết, MV Anime triệu views và kết nối hợp tác trực tiếp.">
+  <meta name="twitter:image" content="https://i.ytimg.com/vi/ZRtdQ81jPUQ/maxresdefault.jpg">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
@@ -115,6 +135,22 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spinSlow 8s linear infinite;
+    }
+    @keyframes eqBar {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+    .playing .eq-bar-1 { animation: eqBar 0.6s ease-in-out infinite; }
+    .playing .eq-bar-2 { animation: eqBar 0.8s ease-in-out infinite 0.2s; }
+    .playing .eq-bar-3 { animation: eqBar 0.5s ease-in-out infinite 0.4s; }
+    .playing .eq-bar-4 { animation: eqBar 0.7s ease-in-out infinite 0.1s; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-[#0B0F19] dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-brand-500 selection:text-white relative overflow-x-hidden min-h-screen">
@@ -141,15 +177,34 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
-        <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Về YOASOBI</a>
-        <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Nghệ thuật & Kỹ năng</a>
-        <a href="#portfolio" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tác phẩm nổi bật</a>
-        <a href="#experience" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cột mốc sự nghiệp</a>
-        <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Hợp tác & Booking</a>
+        <a href="#about" data-i18n="nav_about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Về YOASOBI</a>
+        <a href="#skills" data-i18n="nav_skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Nghệ thuật & Kỹ năng</a>
+        <a href="#portfolio" data-i18n="nav_portfolio" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tác phẩm nổi bật</a>
+        <a href="#experience" data-i18n="nav_experience" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Cột mốc sự nghiệp</a>
+        <a href="#contact" data-i18n="nav_contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Hợp tác & Booking</a>
       </nav>
 
       <!-- Actions -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Switcher Dropdown -->
+        <div class="relative inline-block text-left" id="lang-dropdown-wrapper">
+          <button id="lang-btn" onclick="toggleLangDropdown()" class="px-2.5 sm:px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5 transition-all focus:outline-none" aria-label="Chọn ngôn ngữ">
+            <span id="current-lang-flag">🇻🇳</span>
+            <span id="current-lang-code">VI</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div id="lang-menu" class="hidden absolute right-0 mt-2 w-36 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xl py-1 z-50 text-xs font-semibold">
+            <button onclick="setLanguage('vi')" class="w-full px-4 py-2 text-left hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-800 dark:text-slate-200">
+              <span>🇻🇳</span> <span>Tiếng Việt</span>
+            </button>
+            <button onclick="setLanguage('en')" class="w-full px-4 py-2 text-left hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-800 dark:text-slate-200">
+              <span>🇬🇧</span> <span>English</span>
+            </button>
+            <button onclick="setLanguage('ja')" class="w-full px-4 py-2 text-left hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-800 dark:text-slate-200">
+              <span>🇯🇵</span> <span>日本語</span>
+            </button>
+          </div>
+        </div>
         <!-- Theme Toggle Button -->
         <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-all focus:outline-none" aria-label="Đổi giao diện">
           <svg id="sun-icon" class="w-5 h-5 hidden text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -191,14 +246,22 @@
 
     <!-- Mobile Dropdown -->
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F19] transition-all">
-      <div class="flex flex-col space-y-4 pt-2 font-medium">
-        <a href="#about" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Về YOASOBI</a>
-        <a href="#skills" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Nghệ thuật & Kỹ năng</a>
-        <a href="#portfolio" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Tác phẩm nổi bật</a>
-        <a href="#experience" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Cột mốc sự nghiệp</a>
-        <a href="#contact" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Hợp tác & Booking</a>
+      <div class="flex items-center justify-between pb-3 mb-2 border-b border-slate-100 dark:border-slate-800 text-xs font-semibold">
+        <span class="text-slate-500">Ngôn ngữ / Language:</span>
+        <div class="flex items-center gap-1">
+          <button onclick="setLanguage('vi')" class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">🇻🇳 VI</button>
+          <button onclick="setLanguage('en')" class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">🇬🇧 EN</button>
+          <button onclick="setLanguage('ja')" class="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">🇯🇵 JP</button>
+        </div>
+      </div>
+      <div class="flex flex-col space-y-4 pt-1 font-medium">
+        <a href="#about" data-i18n="nav_about" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Về YOASOBI</a>
+        <a href="#skills" data-i18n="nav_skills" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Nghệ thuật & Kỹ năng</a>
+        <a href="#portfolio" data-i18n="nav_portfolio" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Tác phẩm nổi bật</a>
+        <a href="#experience" data-i18n="nav_experience" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Cột mốc sự nghiệp</a>
+        <a href="#contact" data-i18n="nav_contact" class="mobile-link text-slate-700 dark:text-slate-200 py-1">Hợp tác & Booking</a>
         <a href="#contact" class="mobile-link inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand-600 text-white font-semibold">
-          <span>Hợp tác dự án</span>
+          <span data-i18n="nav_cta">Hợp tác dự án</span>
         </a>
       </div>
     </div>
@@ -218,14 +281,14 @@
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-pink-500"></span>
             </span>
-            YOASOBI World Tour & Sáng tạo Nhạc phim Anime
+            <span data-i18n="hero_badge">YOASOBI World Tour & Sáng tạo Nhạc phim Anime</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-900 dark:text-white">
+          <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-900 dark:text-white">
             Chuyển thể <span class="gradient-text">tiểu thuyết</span> thành âm nhạc & nghệ thuật thị giác.
           </h1>
 
-          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+          <p id="hero-desc" class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
             Chúng tôi là <strong class="text-slate-900 dark:text-white font-bold">YOASOBI (Ayase & ikura)</strong> — Bộ đôi nghệ sĩ & nhà sản xuất âm nhạc hàng đầu Nhật Bản. Chúng tôi biến từng trang tiểu thuyết văn học thành giai điệu lôi cuốn, video hoạt họa đầy cảm xúc và trải nghiệm sân khấu bùng nổ toàn cầu.
           </p>
 
@@ -236,7 +299,7 @@
                 <circle cx="6" cy="18" r="3"></circle>
                 <circle cx="18" cy="16" r="3"></circle>
               </svg>
-              <span>Khám phá Tác phẩm</span>
+              <span data-i18n="hero_btn_explore">Khám phá Tác phẩm</span>
             </a>
             
             <a 
@@ -250,7 +313,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" x2="12" y1="15" y2="3"></line>
               </svg>
-              <span>Tải Hồ sơ Nghệ sĩ (PDF)</span>
+              <span data-i18n="hero_btn_cv">Tải Hồ sơ Nghệ sĩ (PDF)</span>
             </a>
           </div>
 
@@ -258,8 +321,17 @@
           <div class="pt-8 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
             <div>
               <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">3.5B+</div>
-              <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Lượt nghe toàn cầu</div>
+              <div data-i18n="hero_stat_streams" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Lượt nghe toàn cầu</div>
             </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">#1</div>
+              <div data-i18n="hero_stat_billboard" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Billboard Global Excl. US</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">100%</div>
+              <div data-i18n="hero_stat_novel" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Chuyển thể tiểu thuyết</div>
+            </div>
+          </div>
             <div>
               <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">#1</div>
               <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">Billboard Global Excl. US</div>
@@ -1409,6 +1481,47 @@
     </div>
   </footer>
 
+  <!-- FLOATING MINI MUSIC PLAYER (YOASOBI VIBES) -->
+  <div id="mini-music-player" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 p-2.5 sm:p-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-700/90 shadow-2xl flex items-center gap-3 max-w-[320px] sm:max-w-sm transition-all duration-300">
+    
+    <!-- Rotating Vinyl / Artwork -->
+    <div class="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-brand-500 shadow-md flex-shrink-0 cursor-pointer" onclick="togglePlayMusic()" title="Bấm để Phát / Dừng">
+      <img id="player-art" src="https://i.ytimg.com/vi/x8VYWazR5mE/hqdefault.jpg" alt="Track Art" class="w-full h-full object-cover">
+      <div class="absolute inset-0 m-auto w-3.5 h-3.5 rounded-full bg-slate-900 border-2 border-white/90"></div>
+    </div>
+
+    <!-- Song Info & Wave Equalizer -->
+    <div class="flex-1 min-w-0 pr-1">
+      <p id="player-title" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">夜に駆ける (Racing Into The Night)</p>
+      <div class="flex items-center justify-between mt-0.5">
+        <p id="player-status" class="text-[11px] text-brand-600 dark:text-brand-400 font-medium truncate">YOASOBI • Piano Lo-Fi Beat</p>
+        
+        <!-- Animated Equalizer Bars -->
+        <div id="eq-bars" class="flex items-end gap-0.5 h-3.5 opacity-40">
+          <span class="w-1 bg-brand-500 rounded-full h-1 eq-bar-1 transition-all"></span>
+          <span class="w-1 bg-pink-500 rounded-full h-2 eq-bar-2 transition-all"></span>
+          <span class="w-1 bg-cyan-400 rounded-full h-1.5 eq-bar-3 transition-all"></span>
+          <span class="w-1 bg-brand-500 rounded-full h-2.5 eq-bar-4 transition-all"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-1">
+      <!-- Play/Pause Button -->
+      <button id="player-play-btn" onclick="togglePlayMusic()" class="w-9 h-9 rounded-xl bg-gradient-to-r from-brand-600 to-pink-600 text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-md shadow-brand-500/25" title="Phát / Dừng">
+        <svg id="play-icon" class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <svg id="pause-icon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </button>
+
+      <!-- Next Song Button -->
+      <button onclick="nextMusicTrack()" class="w-8 h-8 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Bài tiếp theo">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5"></line></svg>
+      </button>
+    </div>
+
+  </div>
+
   <!-- PROJECT CASE STUDY MODAL -->
   <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-black/80 backdrop-blur-md transition-all">
     <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl p-6 sm:p-8 text-slate-800 dark:text-slate-100">
@@ -1426,7 +1539,7 @@
   </div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+  <div id="toast" class="fixed bottom-24 right-4 sm:bottom-24 sm:right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
     <div class="px-5 py-3 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xl flex items-center gap-3 border border-slate-700 dark:border-slate-200">
       <span class="text-emerald-400 dark:text-emerald-600 font-bold">✓</span>
       <span id="toast-message" class="text-sm font-semibold">Thành công!</span>
@@ -1730,6 +1843,291 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeProjectModal();
     });
+
+    // ==========================================
+    // 🌐 HỆ THỐNG ĐA NGÔN NGỮ (VI / EN / JA)
+    // ==========================================
+    const i18nData = {
+      vi: {
+        flag: "🇻🇳",
+        code: "VI",
+        nav_about: "Về YOASOBI",
+        nav_skills: "Nghệ thuật & Kỹ năng",
+        nav_portfolio: "Tác phẩm nổi bật",
+        nav_experience: "Cột mốc sự nghiệp",
+        nav_contact: "Hợp tác & Booking",
+        nav_cta: "Hợp tác dự án",
+        hero_badge: "YOASOBI World Tour & Sáng tạo Nhạc phim Anime",
+        hero_title_html: "Chuyển thể <span class=\"gradient-text\">tiểu thuyết</span> thành âm nhạc & nghệ thuật thị giác.",
+        hero_desc: "Chúng tôi là YOASOBI (Ayase & ikura) — Bộ đôi nghệ sĩ & nhà sản xuất âm nhạc hàng đầu Nhật Bản. Chúng tôi biến từng trang tiểu thuyết văn học thành giai điệu lôi cuốn, video hoạt họa đầy cảm xúc và trải nghiệm sân khấu bùng nổ toàn cầu.",
+        hero_btn_explore: "Khám phá Tác phẩm",
+        hero_btn_cv: "Tải Hồ sơ Nghệ sĩ (PDF)",
+        hero_stat_streams: "Lượt nghe toàn cầu",
+        hero_stat_billboard: "Billboard Global Excl. US",
+        hero_stat_novel: "Chuyển thể tiểu thuyết"
+      },
+      en: {
+        flag: "🇬🇧",
+        code: "EN",
+        nav_about: "About YOASOBI",
+        nav_skills: "Art & Skills",
+        nav_portfolio: "Featured Works",
+        nav_experience: "Milestones",
+        nav_contact: "Contact & Booking",
+        nav_cta: "Project Inquiry",
+        hero_badge: "YOASOBI World Tour & Anime Soundtracks",
+        hero_title_html: "Transforming <span class=\"gradient-text\">novels</span> into music & visual art universe.",
+        hero_desc: "We are YOASOBI (Ayase & ikura) — Japan's pioneering musical duo turning literary novels into chart-topping hits, breathtaking anime music videos, and immersive global live tours.",
+        hero_btn_explore: "Explore Works",
+        hero_btn_cv: "Download Artist CV (PDF)",
+        hero_stat_streams: "Global Streams",
+        hero_stat_billboard: "Billboard Global Excl. US",
+        hero_stat_novel: "Novel-to-Music Adaptations"
+      },
+      ja: {
+        flag: "🇯🇵",
+        code: "JP",
+        nav_about: "YOASOBIについて",
+        nav_skills: "音楽とアート",
+        nav_portfolio: "代表作品",
+        nav_experience: "経歴と歩み",
+        nav_contact: "お問合せ・出演依頼",
+        nav_cta: "お問合せ",
+        hero_badge: "YOASOBI ワールドツアー ＆ アニメ主題歌制作",
+        hero_title_html: "小説を<span class=\"gradient-text\">音楽</span>とビジュアルアートにするユニット。",
+        hero_desc: "コンポーザーのAyaseとボーカルのikuraからなる「小説を音楽にするユニット」YOASOBI。文学小説の世界観を魅惑的なメロディ、アニメーションMV、そして世界を魅了するライブステージへと昇華させます。",
+        hero_btn_explore: "作品を見る",
+        hero_btn_cv: "アーティスト経歴書 (PDF)",
+        hero_stat_streams: "全世界総ストリーミング再生",
+        hero_stat_billboard: "米ビルボード・グローバル1位",
+        hero_stat_novel: "小説連動プロジェクト"
+      }
+    };
+
+    let currentLanguage = 'vi';
+
+    function toggleLangDropdown() {
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    function setLanguage(lang) {
+      if (!i18nData[lang]) return;
+      currentLanguage = lang;
+      try { localStorage.setItem('portfolio_lang', lang); } catch(e) {}
+
+      const data = i18nData[lang];
+      document.getElementById('current-lang-flag').textContent = data.flag;
+      document.getElementById('current-lang-code').textContent = data.code;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) el.textContent = data[key];
+      });
+
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle && data.hero_title_html) {
+        heroTitle.innerHTML = data.hero_title_html;
+      }
+      const heroDesc = document.getElementById('hero-desc');
+      if (heroDesc && data.hero_desc) {
+        heroDesc.textContent = data.hero_desc;
+      }
+
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.classList.add('hidden');
+
+      showToast(lang === 'vi' ? 'Đã đổi sang Tiếng Việt 🇻🇳' : lang === 'en' ? 'Switched to English 🇬🇧' : '日本語に切り替えました 🇯🇵');
+    }
+
+    // ==========================================
+    // 🎵 TRÌNH PHÁT NHẠC MINI (WEB AUDIO SYNTH ENGINE)
+    // ==========================================
+    const musicTracks = [
+      {
+        title: "夜に駆ける (Racing into the Night)",
+        artist: "YOASOBI • Piano & Lo-Fi Beats",
+        art: "https://i.ytimg.com/vi/x8VYWazR5mE/hqdefault.jpg",
+        bpm: 130,
+        // Japanese Royal Road Progression (Fmaj7 - G7 - Em7 - Am7)
+        chords: [
+          [349.23, 440.00, 523.25, 659.25], // F4, A4, C5, E5
+          [392.00, 493.88, 587.33, 698.46], // G4, B4, D5, F5
+          [329.63, 392.00, 493.88, 587.33], // E4, G4, B4, D5
+          [220.00, 261.63, 329.63, 392.00]  // A3, C4, E4, G4
+        ]
+      },
+      {
+        title: "アイドル (Idol) — Anime Theme",
+        artist: "YOASOBI • Synthwave & Pop",
+        art: "https://i.ytimg.com/vi/ZRtdQ81jPUQ/hqdefault.jpg",
+        bpm: 166,
+        chords: [
+          [261.63, 329.63, 392.00, 493.88], // Cmaj7
+          [293.66, 369.99, 440.00, 523.25], // D7
+          [246.94, 329.63, 392.00, 440.00], // Bm7
+          [220.00, 261.63, 329.63, 440.00]  // Am7
+        ]
+      },
+      {
+        title: "群青 (Gunjou) — Ambient Chill",
+        artist: "YOASOBI • Inspiring Harmony",
+        art: "https://i.ytimg.com/vi/Y4nEEZwckuU/hqdefault.jpg",
+        bpm: 110,
+        chords: [
+          [349.23, 440.00, 523.25, 698.46], // F
+          [261.63, 329.63, 392.00, 523.25], // C
+          [293.66, 349.23, 440.00, 587.33], // Dm
+          [220.00, 261.63, 349.23, 440.00]  // Bb
+        ]
+      }
+    ];
+
+    let currentTrackIndex = 0;
+    let isMusicPlaying = false;
+    let audioCtx = null;
+    let synthInterval = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playSynthChord(chordFrequencies, duration = 0.8) {
+      if (!audioCtx) return;
+      try {
+        const now = audioCtx.currentTime;
+        const masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.08, now);
+        masterGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1400, now);
+        filter.Q.setValueAtTime(2, now);
+
+        chordFrequencies.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const oscGain = audioCtx.createGain();
+          osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+
+          oscGain.gain.setValueAtTime(0.2, now);
+          oscGain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+
+          osc.connect(oscGain);
+          oscGain.connect(filter);
+
+          osc.start(now + idx * 0.04);
+          osc.stop(now + duration);
+        });
+
+        filter.connect(masterGain);
+        masterGain.connect(audioCtx.destination);
+      } catch (err) {
+        console.warn("Audio synth error:", err);
+      }
+    }
+
+    function startMusicEngine() {
+      initAudioContext();
+      if (!audioCtx) return;
+
+      const track = musicTracks[currentTrackIndex];
+      let chordStep = 0;
+      const stepDuration = (60 / track.bpm) * 2;
+
+      playSynthChord(track.chords[0], stepDuration * 0.95);
+      chordStep = 1;
+
+      synthInterval = setInterval(() => {
+        if (!isMusicPlaying) return;
+        const chords = musicTracks[currentTrackIndex].chords;
+        playSynthChord(chords[chordStep % chords.length], stepDuration * 0.95);
+        chordStep++;
+      }, stepDuration * 1000);
+    }
+
+    function stopMusicEngine() {
+      if (synthInterval) {
+        clearInterval(synthInterval);
+        synthInterval = null;
+      }
+    }
+
+    function updatePlayerUI() {
+      const track = musicTracks[currentTrackIndex];
+      document.getElementById('player-title').textContent = track.title;
+      document.getElementById('player-status').textContent = isMusicPlaying ? track.artist : 'Đã tạm dừng • Bấm để nghe';
+      document.getElementById('player-art').src = track.art;
+
+      const art = document.getElementById('player-art');
+      const eqBars = document.getElementById('eq-bars');
+      const playIcon = document.getElementById('play-icon');
+      const pauseIcon = document.getElementById('pause-icon');
+
+      if (isMusicPlaying) {
+        art.classList.add('animate-spin-slow');
+        eqBars.classList.add('playing');
+        eqBars.classList.remove('opacity-40');
+        eqBars.classList.add('opacity-100');
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      } else {
+        art.classList.remove('animate-spin-slow');
+        eqBars.classList.remove('playing');
+        eqBars.classList.remove('opacity-100');
+        eqBars.classList.add('opacity-40');
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      }
+    }
+
+    function togglePlayMusic() {
+      isMusicPlaying = !isMusicPlaying;
+      if (isMusicPlaying) {
+        startMusicEngine();
+        showToast('🎵 Đang phát: ' + musicTracks[currentTrackIndex].title);
+      } else {
+        stopMusicEngine();
+        showToast('⏸ Đã tạm dừng nhạc.');
+      }
+      updatePlayerUI();
+    }
+
+    function nextMusicTrack() {
+      currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
+      if (isMusicPlaying) {
+        stopMusicEngine();
+        startMusicEngine();
+      }
+      updatePlayerUI();
+      showToast('⏭ Chuyển bài: ' + musicTracks[currentTrackIndex].title);
+    }
+
+    // Close language dropdown on outside click
+    document.addEventListener('click', (e) => {
+      const wrapper = document.getElementById('lang-dropdown-wrapper');
+      const menu = document.getElementById('lang-menu');
+      if (wrapper && menu && !wrapper.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // Restore saved language on load
+    try {
+      const savedLang = localStorage.getItem('portfolio_lang');
+      if (savedLang && i18nData[savedLang]) {
+        setLanguage(savedLang);
+      }
+    } catch(e) {}
   </script>
 </body>
 </html>
